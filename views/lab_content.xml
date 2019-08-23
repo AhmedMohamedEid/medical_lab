@@ -10,6 +10,7 @@
               <tree string="Test Content">
                   <field name="name"/>
                   <field name="lab_test_id"/>
+                  <field name="result"/>
               </tree>
           </field>
       </record>
@@ -47,6 +48,38 @@
             </p>
           </field>
       </record>
+
+
+<!--        results-->
+
+        <record id="lab_result_form_view" model="ir.ui.view">
+            <field name="name">results</field>
+            <field name="model">lab_results</field>
+            <field name="arch" type="xml">
+                <form string="results">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="values_result_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+        <record id="lab_result_tree" model="ir.ui.view">
+            <field name="name">results</field>
+            <field name="model">lab_results</field>
+            <field name="arch" type="xml">
+                <tree string="results" editable="top">
+                    <field name="name"/>
+                     <field name="values_result_id"/>
+                </tree>
+            </field>
+        </record>
+
 
         <!-- This Menu Item must have a parent and an action -->
         <menuitem id="menu_test_content_action" name="Test Content" parent="menu_lab_configuration" action="action_lab_test_type_view" sequence="2"/>

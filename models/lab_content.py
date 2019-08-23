@@ -7,3 +7,4 @@ class LABCONTENT(models.Model):
 
     name = fields.Char(string="Name", required=True, )
     lab_test_id = fields.Many2one(comodel_name="lab.test", string="Lab Test", required=True, )
+    result = fields.Char(string="result", required=False, )

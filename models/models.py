@@ -21,6 +21,11 @@ class MDCLABPATIENT(models.Model):
                                                                     ('ab_pve', 'AB+ve'), ('ab_nve', 'AB-ve'),
                                                                     ('o', 'O'), ], required=False, )
     note = fields.Text(string="Note", required=False, )
+    lab_test_ids = fields.Many2one(comodel_name="lab.test", string="TEST", )
+    lab_result_id = fields.One2many(comodel_name="lab_results", inverse_name="patient_result_id", string="", required=False, )
+    #def lab(self):
+
+
 
 
 
@@ -35,3 +40,15 @@ class LABTEST(models.Model):
     price = fields.Char(string="Price", required=True, )
 
     test_content_ids = fields.One2many(comodel_name="lab.test.type", inverse_name="lab_test_id", string="Test Contetn", required=False, )
+    test_category_ids = fields.Many2one(comodel_name="lab_category", string="Category Name", required=False, )
+
+class LabTestCategory(models.Model):
+    _name = 'lab_category'
+    name = fields.Char(string="Category Name", required=False, )
+
+class labrsults(models.Model):
+    _name='lab_results'
+    name = fields.Char(string="Result", required=False, )
+    patient_result_id = fields.Many2one(comodel_name="mdc.lab.patient", string="", required=False, )
+    values_result_id = fields.Many2one('lab.test.type')
+
