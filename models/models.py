@@ -30,4 +30,5 @@ class LABTEST(models.Model):
     _rec_name = 'name'
     _description = 'Lab Test and Test type'
 
-    # name = fields.Char()
+    name = fields.Char(string="Name", required=False, )
+    prefix_code = fields.Char(string="", required=False, )
