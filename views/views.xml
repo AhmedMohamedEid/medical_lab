@@ -62,5 +62,61 @@
 
       <!-- This Menu Item must have a parent and an action -->
       <menuitem id="menu_mdc_lab_patient_action" name="Patient" parent="menu_mdc_lab_patient_root" action="action_view_mdc_lab_patient" sequence="1"/>
+
+
+      <record id="tree_lab_test_view" model="ir.ui.view">
+          <field name="name">tree.lab.test.view</field>
+          <field name="model">lab.test</field>
+          <field name="arch" type="xml">
+              <tree string="Lab Test">
+                  <field name="name"/>
+                  <field name="prefix_code"/>
+                  <field name="price"/>
+              </tree>
+          </field>
+      </record>
+
+    <record id="form_lab_test_view" model="ir.ui.view">
+        <field name="name">form.lab.test.view</field>
+        <field name="model">lab.test</field>
+        <field name="arch" type="xml">
+            <form string="Lab Test">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" placeholder="......"/>
+                        </h1>
+                    </div>
+                    <group col="4">
+                        <field name="prefix_code"/>
+                        <field name="price"/>
+                    </group>
+                    <group string="Test Content">
+                        <field name="test_content_ids" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+      <record id="action_lab_test_view" model="ir.actions.act_window">
+          <field name="name">Lab Test</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">lab.test</field>
+          <field name="view_mode">tree,form</field>
+          <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+              <!-- Add Text Here -->
+            </p><p>
+              <!-- More details about what a user can do with this object will be OK -->
+            </p>
+          </field>
+      </record>
+
+      <!-- This Menu Item Must have a parent -->
+      <menuitem id="menu_lab_configuration" name="Configuration" parent="menu_mdc_lab_patient_root" sequence="5"/>
+      <!-- This Menu Item must have a parent and an action -->
+      <menuitem id="menu_lab_test_action" name="Lab Test" parent="menu_lab_configuration" action="action_lab_test_view" sequence="1"/>
   </data>
 </odoo>

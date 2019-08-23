@@ -30,5 +30,8 @@ class LABTEST(models.Model):
     _rec_name = 'name'
     _description = 'Lab Test and Test type'
 
-    name = fields.Char(string="Name", required=False, )
-    prefix_code = fields.Char(string="", required=False, )
+    name = fields.Char(string="Name", required=True, )
+    prefix_code = fields.Char(string="Code", required=True, )
+    price = fields.Char(string="Price", required=True, )
+
+    test_content_ids = fields.One2many(comodel_name="lab.test.type", inverse_name="lab_test_id", string="Test Contetn", required=False, )

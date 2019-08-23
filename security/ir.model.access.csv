@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_mdc_lab_patient,Patient,model_mdc_lab_patient,,1,1,1,1
+access_mdc_lab_test,Lab Test,model_lab_test,,1,1,1,1
+access_mdc_lab_test_type,Lab Test Type,model_lab_test_type,,1,1,1,1
