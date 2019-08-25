@@ -145,7 +145,7 @@
 
 
       <record id="lab_category_tree" model="ir.ui.view">
-          <field name="name">lab</field>
+          <field name="name">Lab</field>
           <field name="model">lab_category</field>
           <field name="arch" type="xml">
               <tree string="category">
@@ -160,7 +160,6 @@
           <field name="type">ir.actions.act_window</field>
           <field name="res_model">lab_category</field>
           <field name="view_mode">tree,form</field>
-
       </record>
 
 

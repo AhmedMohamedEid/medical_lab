@@ -4,3 +4,4 @@ access_mdc_lab_test,Lab Test,model_lab_test,,1,1,1,1
 access_mdc_lab_test_type,Lab Test Type,model_lab_test_type,,1,1,1,1
 access_mdc_lab_test_cat,Lab Test Cate,model_lab_category,,1,1,1,1
 access_mdc_lab_test_results,Lab Test Results,model_lab_results,,1,1,1,1
+access_mdc_lab_test_unit,Lab Test Unit,model_test_unit,,1,1,1,1

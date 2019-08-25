@@ -42,13 +42,22 @@ class LABTEST(models.Model):
     test_content_ids = fields.One2many(comodel_name="lab.test.type", inverse_name="lab_test_id", string="Test Contetn", required=False, )
     test_category_ids = fields.Many2one(comodel_name="lab_category", string="Category Name", required=False, )
 
+
 class LabTestCategory(models.Model):
     _name = 'lab_category'
     name = fields.Char(string="Category Name", required=False, )
 
+
+
 class labrsults(models.Model):
     _name='lab_results'
-    name = fields.Char(string="Result", required=False, )
-    patient_result_id = fields.Many2one(comodel_name="mdc.lab.patient", string="", required=False, )
-    values_result_id = fields.Many2one('lab.test.type')
+    _rec_name = 'code'
+    _description = 'Lab Request'
+
+    code = fields.Char(string="Code", required=False, )
+    patient_result_id = fields.Many2one(comodel_name="mdc.lab.patient", string="Patient", required=True, )
+    lab_test_id = fields.Many2one(comodel_name='lab.test', string="Lab Test")
+    request_date = fields.Datetime(string="Request Date", default=fields.Datetime.now, required=False, )
+
+
 

@@ -9,8 +9,8 @@
           <field name="arch" type="xml">
               <tree string="Test Content">
                   <field name="name"/>
-                  <field name="lab_test_id"/>
-                  <field name="result"/>
+                  <field name="test_unit_id"/>
+                  <!--<field name="result"/>-->
               </tree>
           </field>
       </record>
@@ -29,6 +29,7 @@
                     </div>
                     <group col="4">
                         <field name="lab_test_id"/>
+                        <field name="test_unit_id"/>
                     </group>
                 </sheet>
             </form>
@@ -49,18 +50,19 @@
           </field>
       </record>
 
+        <menuitem id="menu_test_content_action" name="Test Content" parent="menu_lab_configuration" action="action_lab_test_type_view" sequence="2"/>
 
-<!--        results-->
+<!--        Test Unit -->
 
-        <record id="lab_result_form_view" model="ir.ui.view">
-            <field name="name">results</field>
-            <field name="model">lab_results</field>
+        <record id="lab_test_unit_form_view" model="ir.ui.view">
+            <field name="name">lab.test.unit.form.view</field>
+            <field name="model">test.unit</field>
             <field name="arch" type="xml">
-                <form string="results">
+                <form string="Unit">
                     <sheet>
                         <group>
                             <field name="name"/>
-                            <field name="values_result_id"/>
+                            <field name="code"/>
                         </group>
                     </sheet>
                 </form>
@@ -69,19 +71,25 @@
 
 
 
-        <record id="lab_result_tree" model="ir.ui.view">
-            <field name="name">results</field>
-            <field name="model">lab_results</field>
+        <record id="lab_test_unit_tree_view" model="ir.ui.view">
+            <field name="name">lab.test.unit.tree.view</field>
+            <field name="model">test.unit</field>
             <field name="arch" type="xml">
-                <tree string="results" editable="top">
+                <tree string="Unit">
                     <field name="name"/>
-                     <field name="values_result_id"/>
+                     <field name="code"/>
                 </tree>
             </field>
         </record>
 
+        <record id="lab_test_unit_action_view" model="ir.actions.act_window">
+            <field name="name">Test Unit</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">test.unit</field>
+            <field name="view_mode">tree,form</field>
+        </record>
 
         <!-- This Menu Item must have a parent and an action -->
-        <menuitem id="menu_test_content_action" name="Test Content" parent="menu_lab_configuration" action="action_lab_test_type_view" sequence="2"/>
+        <menuitem id="menu_test_unit_action" name="Test Unit" parent="menu_lab_configuration" action="lab_test_unit_action_view" sequence="4"/>
     </data>
 </odoo>
