@@ -35,7 +35,7 @@
                           <field name="phone"/>
                           <field name="email"/>
                           <field name="blood_group"/>
-                          <field name="lab_test_ids"/>
+<!--                          <field name="lab_test_ids"/>-->
                       </group>
                       <group string="Note">
                           <field name="note" nolabel="1"/>
@@ -43,10 +43,13 @@
 
 
                       <group string="TEST">
-                       <field name="lab_result_id" nolabel="1"/>
+                       <field name="lab_result_id" nolabel="1" readonly='1'/>
 
                       </group>
+                     <group>
 
+                         <field name="price_count"/>
+                     </group>
 
                   </sheet>
               </form>
@@ -184,6 +187,7 @@
                   <field name="patient_result_id"/>
                   <field name="lab_test_id"/>
                   <field name="request_date"/>
+
               </tree>
           </field>
       </record>
@@ -206,6 +210,11 @@
                           <field name="lab_test_id"/>
                           <field name="request_date"/>
                       </group>
+                      <group>
+
+                          <field name="lab_content_ids" domain="[('lab_test_id.id','=',lab_test_id)]"/>
+
+                      </group>
                   </sheet>
               </form>
           </field>
@@ -225,8 +234,51 @@
           </field>
       </record>
 
+
+
+
+<!--      results-->
+
+      <record id="lab_test_result_tt" model="ir.ui.view">
+          <field name="name">results</field>
+          <field name="model">lab_test_result</field>
+          <field name="arch" type="xml">
+              <tree string="res">
+                  <field name="name"/>
+                  <field name="lab_content_id"/>
+              </tree>
+          </field>
+      </record>
+
+
+    <record id="lab_test_form_tt" model="ir.ui.view">
+        <field name="name">result</field>
+        <field name="model">lab_test_result</field>
+        <field name="arch" type="xml">
+            <form string="result">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="lab_content_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+      <record id="lab_test_result" model="ir.actions.act_window">
+          <field name="name">results</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">lab_test_result</field>
+          <field name="view_mode">tree,form</field>
+
+      </record>
+
       <!-- This Menu Item must have a parent and an action -->
       <menuitem id="menu_lab_request_action" name="Request" parent="menu_mdc_lab_patient_root" action="lab_request_action_view" sequence="2"/>
+      <!-- This Menu Item must have a parent and an action -->
+      <menuitem id="lab_test_menue_action_tt" name="results" parent="menu_mdc_lab_patient_root" action="lab_test_result" sequence=""/>
 
   </data>
 </odoo>
