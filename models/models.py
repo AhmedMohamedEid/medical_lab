@@ -21,9 +21,22 @@ class MDCLABPATIENT(models.Model):
                                                                     ('ab_pve', 'AB+ve'), ('ab_nve', 'AB-ve'),
                                                                     ('o', 'O'), ], required=False, )
     note = fields.Text(string="Note", required=False, )
-    lab_test_ids = fields.Many2one(comodel_name="lab.test", string="TEST", )
-    lab_result_id = fields.One2many(comodel_name="lab_results", inverse_name="patient_result_id", string="", required=False, )
-    #def lab(self):
+    # lab_test_ids = fields.Many2one(comodel_name="lab.test", string="TEST", )
+    lab_result_id = fields.One2many(comodel_name="lab_results", inverse_name="patient_result_id", string="", required=False,)
+    price_count = fields.Char(string='Sum' , compute='price_sum')
+
+    @api.depends('lab_result_id')
+    def price_sum(self):
+        result = 0
+        for record in self.lab_result_id:
+            result = result+record.lab_test_id.price
+        self.price_count=result
+
+
+
+
+
+
 
 
 
@@ -37,7 +50,7 @@ class LABTEST(models.Model):
 
     name = fields.Char(string="Name", required=True, )
     prefix_code = fields.Char(string="Code", required=True, )
-    price = fields.Char(string="Price", required=True, )
+    price = fields.Float(string="Price", required=True, )
 
     test_content_ids = fields.One2many(comodel_name="lab.test.type", inverse_name="lab_test_id", string="Test Contetn", required=False, )
     test_category_ids = fields.Many2one(comodel_name="lab_category", string="Category Name", required=False, )
@@ -50,7 +63,7 @@ class LabTestCategory(models.Model):
 
 
 class labrsults(models.Model):
-    _name='lab_results'
+    _name = 'lab_results'
     _rec_name = 'code'
     _description = 'Lab Request'
 
@@ -58,6 +71,11 @@ class labrsults(models.Model):
     patient_result_id = fields.Many2one(comodel_name="mdc.lab.patient", string="Patient", required=True, )
     lab_test_id = fields.Many2one(comodel_name='lab.test', string="Lab Test")
     request_date = fields.Datetime(string="Request Date", default=fields.Datetime.now, required=False, )
+    lab_content_ids = fields.Many2many(comodel_name="lab.test.type",  string="sub test", )
 
 
 
+class tests_results(models.Model):
+    _name = 'lab_test_result'
+    name = fields.Char(string='result')
+    lab_content_id = fields.One2many('lab.test.type',inverse_name='result')
