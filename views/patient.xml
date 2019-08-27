@@ -1,0 +1,75 @@
+<odoo>
+  <data>
+
+    <record id="tree_mdc_lab_patient_view" model="ir.ui.view">
+        <field name="name">tree.mdc.lab.patient.view</field>
+        <field name="model">mdc.lab.patient</field>
+        <field name="arch" type="xml">
+            <tree string="Patient">
+                <field name="name"/>
+                <field name="age"/>
+                <field name="address"/>
+                <field name="phone"/>
+            </tree>
+        </field>
+    </record>
+
+      <record id="form_mdc_lab_patient_view" model="ir.ui.view">
+          <field name="name">form.mdc.lab.patient.view</field>
+          <field name="model">mdc.lab.patient</field>
+          <field name="arch" type="xml">
+              <form string="Patient">
+                  <sheet>
+                      <field name="image" widget='image' class="oe_avatar"/>
+                      <div class="oe_title">
+                          <field name="title"/>
+                          <h1>
+                              <field name="name" placeholder="Patient Name"/>
+                          </h1>
+                      </div>
+                      <group col="4">
+                          <field name="patient_id"/>
+                          <field name="gender"/>
+                          <field name="age"/>
+                          <field name="address"/>
+                          <field name="phone"/>
+                          <field name="email"/>
+                          <field name="blood_group"/>
+<!--                          <field name="lab_test_ids"/>-->
+                      </group>
+                      <group string="Note">
+                          <field name="note" nolabel="1"/>
+                      </group>
+
+
+                      <!--<group string="TEST">-->
+                       <!--<field name="lab_result_id" nolabel="1" readonly='1'/>-->
+
+                      <!--</group>-->
+                     <!--<group>-->
+
+                         <!--<field name="price_count"/>-->
+                     <!--</group>-->
+
+                  </sheet>
+              </form>
+          </field>
+      </record>
+
+      <record id="action_view_mdc_lab_patient" model="ir.actions.act_window">
+          <field name="name">Patient</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">mdc.lab.patient</field>
+          <field name="view_mode">tree,form</field>
+          <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+              <!-- Add Text Here -->
+            </p><p>
+              <!-- More details about what a user can do with this object will be OK -->
+            </p>
+          </field>
+      </record>
+
+
+  </data>
+</odoo>
