@@ -4,10 +4,17 @@
          <template id="lab_report_template">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="doc">
-                    <t t-call="web.external_layout">
-                        <div class="header">
+
+
+
+
+                        <div class="header" style="border-bottom: 2px solid black;background:blue">
                             <h2>header</h2>
                         </div>
+
+
+
+                        <div class="article">
                          <div class="page">
                              <div class="content-info">
                                 <div class="text-center">
@@ -32,7 +39,7 @@
 
 
 
-                                    <table class="table table-sm">
+                                   <table class="table table-condensed table-bordered" style="width: 100%">
                                  <thead>
                                      <tr>
                                          <th class="text-center">Request</th>
@@ -55,12 +62,31 @@
                                      </t>
                                  </tbody>
                              </table>
-
-                                </div>
                              </div>
-                         </div>
-                    </t>
+
+                             </div>
+                             </div>
+                                 </div>
+
+                     <div class="footer">
+                <div class="row text-center" style="border-top: 1px solid black;">
+                    <div class="col col-3 offset-9 text-right">
+                        <ul class="list-inline mt-2">
+                            <li class="list-inline-item">Page:</li>
+                            <li class="list-inline-item">
+                                <span class="page"/>
+                            </li>
+                            <li class="list-inline-item">/</li>
+                            <li class="list-inline-item">
+                                <span class="topage"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
                 </t>
+
             </t>
          </template>
     </data>
