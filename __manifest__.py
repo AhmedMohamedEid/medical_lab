@@ -25,9 +25,11 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/lab_content.xml',
-        'views/templates.xml',
+        'views/patient.xml',
+        'views/lab_test.xml',
+        'views/lab_request.xml',
+        'views/menu.xml',
+        'data/ir.sequnce_data.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
