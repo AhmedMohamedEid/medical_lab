@@ -30,17 +30,17 @@ class LABREQUEST(models.Model):
 
         return session_self__create
 
-    @api.multi
-    def write(self, values):
-        test_content = self.env['test.content.result']
-        for content in self.env["lab.test.type"].search([("lab_test_id.id", "=", self.lab_test_id.id)]):
-            print(content)
-            test_content.create({
-                "request_id": self.id,
-                "content_type_id": content.id,
-                "result": 0,
-            })
-        return super(LABREQUEST, self).write(values)
+    # @api.multi
+    # def write(self, values):
+    #     test_content = self.env['test.content.result']
+    #     for content in self.env["lab.test.type"].search([("lab_test_id.id", "=", self.lab_test_id.id)]):
+    #         print(content)
+    #         test_content.create({
+    #             "request_id": self.id,
+    #             "content_type_id": content.id,
+    #             "result": 0,
+    #         })
+    #     return super(LABREQUEST, self).write(values)
 
 class LABTESTCONTENT(models.Model):
     _name = 'test.content.result'
