@@ -1,0 +1,71 @@
+<odoo>
+    <data>
+
+         <template id="lab_report_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="header">
+                            <h2>header</h2>
+                        </div>
+                         <div class="page">
+                             <div class="content-info">
+                                <div class="text-center">
+                                     <div class="text-right">
+
+                                     <span t-field="doc.patient_result_id"/>
+                                          <label class="font-weight-bold">:الاسم </label>
+                                 </div>
+
+                                     <div class="text-right">
+
+                                     <span class="text-right" t-field="doc.request_date"/>
+                                         <label class="font-weight-bold text-right">:التاريخ</label>
+                                 </div>
+
+                                    <hr></hr>
+                                    <br></br>
+                                    <br></br>
+                                    <h2><span t-field="doc.lab_test_id"/></h2>
+                                    <br></br>
+                                    <br></br>
+
+
+
+                                    <table class="table table-sm">
+                                 <thead>
+                                     <tr>
+                                         <th class="text-center">Request</th>
+                                         <th class="text-center">lab test</th>
+                                         <th class="text-center">Content</th>
+                                         <th class="text-center">result</th>
+
+                                     </tr>
+                                 </thead>
+                                 <tbody>
+                                     <t t-foreach="doc.content_ids" t-as="app">
+                                         <tr>
+                                             <td><span t-field="app.request_id"/></td>
+                                             <td><span t-field="app.test_id"/></td>
+                                             <td><span t-field="app.content_type_id"/></td>
+
+                                             <td><span t-field="app.result"/></td>
+
+                                         </tr>
+                                     </t>
+                                 </tbody>
+                             </table>
+
+                                </div>
+                             </div>
+                         </div>
+                    </t>
+                </t>
+            </t>
+         </template>
+    </data>
+
+</odoo>
+
+
+

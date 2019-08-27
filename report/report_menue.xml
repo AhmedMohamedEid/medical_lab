@@ -1,0 +1,17 @@
+<odoo>
+    <data>
+
+
+        <report
+            id="report_lab_menue_action"
+            model="lab.request"
+            report_type="qweb-pdf"
+            string="Lab"
+            name="medical_lab.lab_report_template"
+            file="medical_lab.report_template"
+        />
+
+
+
+    </data>
+</odoo>
