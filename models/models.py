@@ -21,17 +21,10 @@ class MDCLABPATIENT(models.Model):
                                                                     ('ab_pve', 'AB+ve'), ('ab_nve', 'AB-ve'),
                                                                     ('o', 'O'), ], required=False, )
     note = fields.Text(string="Note", required=False, )
+    appointment_lab_id = fields.One2many(comodel_name="lab_appointment", inverse_name="patient_id", string="appointments", required=False, )
     # lab_test_ids = fields.Many2one(comodel_name="lab.test", string="TEST", )
     # lab_result_id = fields.One2many(comodel_name="lab_results", inverse_name="patient_result_id", string="", required=False,)
-    # price_count = fields.Char(string='Sum' , compute='price_sum')
-    #
-    # @api.depends('lab_result_id')
-    # def price_sum(self):
-    #     result = 0
-    #     for record in self.lab_result_id:
-    #         result = result+record.lab_test_id.price
-    #     self.price_count=result
-    #
+
 
 
 

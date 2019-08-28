@@ -12,6 +12,12 @@ class LABREQUEST(models.Model):
     request_date = fields.Datetime(string="Request Date", default=fields.Datetime.now, required=False, )
     # lab_content_ids = fields.Many2many(comodel_name="lab.test.type",  string="sub test", )
     content_ids = fields.One2many(comodel_name="test.content.result", inverse_name="request_id", string="Content", required=False, )
+    state = fields.Selection(string="stat", selection=[('progrss', 'Test Progress'), ('calculated', 'Test calculated'),],
+                             default='progrss', required=False, )
+    doctor_name = fields.Char(string="Doctor", required=False, )
+
+    def change_state_calculated(self):
+        self.state = 'calculated'
 
     @api.model
     def create(self, values):
@@ -52,7 +58,27 @@ class LABTESTCONTENT(models.Model):
 
 
 class AppionmentLab(models.Model):
-    _name = 'lab_appionment'
-    name = fields.Char(string="appiontmen ID", required=False, )
+    _name = 'lab_appointment'
+    name = fields.Char(string="appointment ID", required=False, )
     patient_id = fields.Many2one(comodel_name="mdc.lab.patient", string="", required=False,)
+    # payment = fields.Char(string="Payment term", required=False, )
+    invoice_date = fields.Datetime(string="Invoice Date", required=False,  default=fields.Datetime.now)
+    lab_test_ids = fields.Many2many(comodel_name="lab.test",  string="TEST", )
+    state = fields.Selection(string="stat", selection=[('draft', 'Draft'), ('open', 'Open'),('paid', 'Paid'), ], default='draft',required=False, )
+
+    price_count = fields.Float(string='Sum' , compute='price_sum')
+
+    def change_state_open(self):
+        self.state = 'open'
+    def change_state_paid(self):
+        self.state = 'paid'
+
+    @api.depends('lab_test_ids')
+    def price_sum(self):
+        result = 0
+        for record in self.lab_test_ids:
+            result = result+record.price
+        self.price_count = result
+
+
 

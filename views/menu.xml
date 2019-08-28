@@ -8,6 +8,8 @@
 
         <menuitem id="menu_lab_test_content_request_action" name="Test Content" parent="menu_lab_root_action" action="lab_test_request_content_action_view" sequence="2"/>
 
+        <!--appointment-->
+        <menuitem id="lab_appointment_action" name="Appointment" parent="menu_lab_root_action" action="lab_test_appointment_action" sequence="3"/>
 
         <!--configuration Menu-->
         <menuitem id="menu_lab_configuration" name="Configuration" parent="menu_lab_root_action" sequence="5"/>
