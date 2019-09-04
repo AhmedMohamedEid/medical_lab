@@ -29,7 +29,10 @@
         'views/lab_test.xml',
         'views/lab_request.xml',
         'views/menu.xml',
+        'report/report_template.xml',
+        'report/report_menue.xml',
         'data/ir.sequnce_data.xml',
+
     ],
     # only loaded in demonstration mode
     'demo': [

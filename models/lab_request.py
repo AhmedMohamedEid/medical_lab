@@ -45,9 +45,14 @@ class LABREQUEST(models.Model):
 class LABTESTCONTENT(models.Model):
     _name = 'test.content.result'
     _description = 'Lab Test Content Result'
-
     request_id = fields.Many2one(comodel_name="lab.request", string="Request", required=True, )
     test_id = fields.Many2one(related="request_id.lab_test_id")
     content_type_id = fields.Many2one(comodel_name="lab.test.type", string="Content", required=True, )
-
     result = fields.Float(string="Result", required=False, )
+
+
+class AppionmentLab(models.Model):
+    _name = 'lab_appionment'
+    name = fields.Char(string="appiontmen ID", required=False, )
+    patient_id = fields.Many2one(comodel_name="mdc.lab.patient", string="", required=False,)
+
