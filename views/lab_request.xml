@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+      <!--Lab Request-->
+
+      <record id="lab_request_tree_view" model="ir.ui.view">
+          <field name="name">lab.request.tree.view</field>
+          <field name="model">lab.request</field>
+          <field name="arch" type="xml">
+              <tree string="Lab Requests">
+                  <field name="code"/>
+                  <field name="patient_result_id"/>
+                  <field name="lab_test_id"/>
+                  <field name="request_date"/>
+                  <field name="doctor_name"/>
+
+              </tree>
+          </field>
+      </record>
+
+
+      <record id="lab_request_form_view" model="ir.ui.view">
+          <field name="name">lab.request.form.view</field>
+          <field name="model">lab.request</field>
+          <field name="arch" type="xml">
+              <form string="Lab Request">
+
+                  <header>
+                        <button name="change_state_calculated" string="calculated" class="oe_highlight" states="progrss" type="object"/>
+
+                       <field name="state" widget="statusbar" statusbar_visible="progrss,calculated"/>
+                   </header>
+
+
+                  <sheet>
+                      <div class="oe_title">
+                          <label for="code" class="oe_edit_only"/>
+                          <h1>
+                              <field name="code" placeholder="......"/>
+                          </h1>
+                      </div>
+                      <group col="4">
+                          <field name="patient_result_id"/>
+                          <field name="lab_test_id"/>
+                          <field name="request_date"/>
+                          <field name="doctor_name"/>
+                      </group>
+                      <group>
+                          <field name="content_ids" nolabel="1"/>
+                      </group>
+                  </sheet>
+              </form>
+          </field>
+      </record>
+
+      <record id="lab_request_action_view" model="ir.actions.act_window">
+          <field name="name">Lab Request</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">lab.request</field>
+          <field name="view_mode">tree,form</field>
+          <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+              <!-- Add Text Here -->
+            </p><p>
+              <!-- More details about what a user can do with this object will be OK -->
+            </p>
+          </field>
+      </record>
+
+
+
+
+<!--  Request Content -->
+
+      <record id="lab_test_request_content_tree_view" model="ir.ui.view">
+          <field name="name">lab.test.request.content.tree.view</field>
+          <field name="model">test.content.result</field>
+          <field name="arch" type="xml">
+              <tree string="res">
+                  <field name="request_id"/>
+                  <field name="test_id"/>
+                  <field name="content_type_id"/>
+                  <field name="result"/>
+              </tree>
+          </field>
+      </record>
+
+
+    <record id="lab_test_request_content_form_view" model="ir.ui.view">
+        <field name="name">lab.test.request.content.form.view</field>
+        <field name="model">test.content.result</field>
+        <field name="arch" type="xml">
+            <form string="Test Content">
+                <sheet>
+                    <group>
+                        <field name="request_id"/>
+                        <field name="test_id"/>
+                        <field name="content_type_id"/>
+                        <field name="result"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+      <record id="lab_test_request_content_action_view" model="ir.actions.act_window">
+          <field name="name">lab.test.request.content.action.view</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">test.content.result</field>
+          <field name="view_mode">tree,form</field>
+
+      </record>
+
+
+
+<!--   appointment     -->
+
+
+        <record id="lab_test_appointment_form" model="ir.ui.view">
+            <field name="name">appointment</field>
+            <field name="model">lab_appointment</field>
+            <field name="arch" type="xml">
+                <form string="appointment">
+
+                   <header>
+                        <button name="change_state_open" string="validate" class="oe_highlight" states="draft" type="object"/>
+                       <button name="change_state_paid" string="paid" class="oe_highlight" states="open" type="object"/>
+                        <button type="action"
+                                            name="medical_lab.lab_request_action_view"
+                                            string="Request" icon="fa-arrow-right" class="oe_link"/>
+                       <field name="state" widget="statusbar" statusbar_visible="draft,open,paid"/>
+                   </header>
+
+                    <sheet>
+                        <group col="4">
+                            <field name="name"/>
+                            <field name="patient_id"/>
+
+                            <field name="invoice_date"/>
+
+                        </group>
+
+                    <notebook>
+                        <page string="TEST">
+                            <group>
+                              <field name="lab_test_ids" nolabel="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+
+
+
+                    <group class="oe_subtotal_footer oe_right">
+                        <field name="price_count"  string="total"  widget="monetary"/>
+                    </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="lab_test_appointment_tree" model="ir.ui.view">
+            <field name="name"></field>
+            <field name="model">lab_appointment</field>
+            <field name="arch" type="xml">
+                <tree string="appointment">
+                            <field name="name"/>
+                            <field name="patient_id"/>
+
+                            <field name="invoice_date"/>
+                            <field name="lab_test_ids"/>
+
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="lab_test_appointment_action" model="ir.actions.act_window">
+            <field name="name">appointment</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">lab_appointment</field>
+            <field name="view_mode">tree,form</field>
+
+        </record>
+
+    </data>
+</odoo>

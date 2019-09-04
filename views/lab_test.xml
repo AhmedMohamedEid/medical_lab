@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+
+<!--   categories views   -->
+
+      <record id="lab_category_form" model="ir.ui.view">
+          <field name="name">Lab</field>
+          <field name="model">lab_category</field>
+          <field name="arch" type="xml">
+              <form string="category">
+                  <sheet>
+                      <group>
+                          <field name="name"/>
+                      </group>
+                  </sheet>
+              </form>
+          </field>
+      </record>
+
+
+
+      <record id="lab_category_tree" model="ir.ui.view">
+          <field name="name">Lab</field>
+          <field name="model">lab_category</field>
+          <field name="arch" type="xml">
+              <tree string="category">
+                  <field name="name"/>
+              </tree>
+          </field>
+      </record>
+
+
+      <record id="lab_category_action" model="ir.actions.act_window">
+          <field name="name">category</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">lab_category</field>
+          <field name="view_mode">tree,form</field>
+      </record>
+
+
+
+
+        <!-- ====== Lab Test ========== -->
+
+      <record id="tree_lab_test_view" model="ir.ui.view">
+          <field name="name">tree.lab.test.view</field>
+          <field name="model">lab.test</field>
+          <field name="arch" type="xml">
+              <tree string="Lab Test">
+                  <field name="name"/>
+                  <field name="prefix_code"/>
+                  <field name="price"/>
+              </tree>
+          </field>
+      </record>
+
+    <record id="form_lab_test_view" model="ir.ui.view">
+        <field name="name">form.lab.test.view</field>
+        <field name="model">lab.test</field>
+        <field name="arch" type="xml">
+            <form string="Lab Test">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" placeholder="......"/>
+                        </h1>
+                    </div>
+                    <group col="4">
+                        <field name="prefix_code"/>
+                        <field name="price"/>
+                        <field name="test_category_ids"/>
+                    </group>
+                    <group string="Test Content">
+                        <field name="test_content_ids" nolabel="1" editable="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+      <record id="action_lab_test_view" model="ir.actions.act_window">
+          <field name="name">Lab Test</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">lab.test</field>
+          <field name="view_mode">tree,form</field>
+          <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+              <!-- Add Text Here -->
+            </p><p>
+              <!-- More details about what a user can do with this object will be OK -->
+            </p>
+          </field>
+      </record>
+
+
+
+
+
+
+      <record id="tree_lab_test_type_view" model="ir.ui.view">
+          <field name="name">tree.lab.test.type.view</field>
+          <field name="model">lab.test.type</field>
+          <field name="arch" type="xml">
+              <tree string="Test Content">
+                  <field name="name"/>
+                  <field name="test_unit_id"/>
+                  <field name="start_range"/>
+                  <field name="end_range"/>
+              </tree>
+          </field>
+      </record>
+
+    <record id="form_lab_test_type_view" model="ir.ui.view">
+        <field name="name">form.lab.test.type.view</field>
+        <field name="model">lab.test.type</field>
+        <field name="arch" type="xml">
+            <form string="Test Content">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" placeholder="......"/>
+                        </h1>
+                    </div>
+                    <group col="4">
+                        <field name="lab_test_id"/>
+                        <field name="test_unit_id"/>
+                        <field name="start_range"/>
+                        <field name="end_range"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+      <record id="action_lab_test_type_view" model="ir.actions.act_window">
+          <field name="name">Test Content</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">lab.test.type</field>
+          <field name="view_mode">tree,form</field>
+          <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+              <!-- Add Text Here -->
+            </p><p>
+              <!-- More details about what a user can do with this object will be OK -->
+            </p>
+          </field>
+      </record>
+
+
+
+<!--        Test Unit    -->
+
+        <record id="lab_test_unit_form_view" model="ir.ui.view">
+            <field name="name">lab.test.unit.form.view</field>
+            <field name="model">test.unit</field>
+            <field name="arch" type="xml">
+                <form string="Unit">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+        <record id="lab_test_unit_tree_view" model="ir.ui.view">
+            <field name="name">lab.test.unit.tree.view</field>
+            <field name="model">test.unit</field>
+            <field name="arch" type="xml">
+                <tree string="Unit">
+                    <field name="name"/>
+                     <field name="code"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="lab_test_unit_action_view" model="ir.actions.act_window">
+            <field name="name">Test Unit</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">test.unit</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+
+    </data>
+</odoo>

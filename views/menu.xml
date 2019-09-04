@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Menu Root  -->
+        <menuitem id="menu_lab_root_action" name="Lab" sequence="1"/>
+        <menuitem id="menu_lab_request_action" name="Request" parent="menu_lab_root_action" action="lab_request_action_view" sequence="1"/>
+
+        <menuitem id="menu_lab_test_content_request_action" name="Test Content" parent="menu_lab_root_action" action="lab_test_request_content_action_view" sequence="2"/>
+
+        <!--appointment-->
+        <menuitem id="lab_appointment_action" name="Appointment" parent="menu_lab_root_action" action="lab_test_appointment_action" sequence="3"/>
+
+        <!--configuration Menu-->
+        <menuitem id="menu_lab_configuration" name="Configuration" parent="menu_lab_root_action" sequence="5"/>
+            <!--Patient Menu-->
+        <menuitem id="menu_mdc_lab_patient_action" name="Patient" parent="menu_lab_configuration" action="action_view_mdc_lab_patient" sequence="1"/>
+            <!--Category Test-->
+        <menuitem id="menu_lab_test_categ" name="Test" parent="menu_lab_configuration" sequence="2"/>
+        <menuitem id="menue_lab_category_action" name="Category Tests" parent="menu_lab_test_categ" action="lab_category_action" sequence="1"/>
+        <menuitem id="menu_lab_test_action" name="Lab Test" parent="menu_lab_test_categ" action="action_lab_test_view" sequence="2"/>
+        <menuitem id="menu_test_content_action" name="Test Content" parent="menu_lab_test_categ" action="action_lab_test_type_view" sequence="3"/>
+        <menuitem id="menu_test_unit_action" name="Test Unit" parent="menu_lab_test_categ" action="lab_test_unit_action_view" sequence="4"/>
+
+
+    </data>
+</odoo>

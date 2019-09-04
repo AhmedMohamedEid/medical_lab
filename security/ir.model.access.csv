@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mdc_lab_patient,Patient,model_mdc_lab_patient,,1,1,1,1
+access_mdc_lab_test,Lab Test,model_lab_test,,1,1,1,1
+access_mdc_lab_test_type,Lab Test Type,model_lab_test_type,,1,1,1,1
+access_mdc_lab_test_cat,Lab Test Cate,model_lab_category,,1,1,1,1
+access_mdc_lab_test_request,Lab Test Request,model_lab_request,,1,1,1,1
+access_mdc_lab_test_request_content,Lab Test Content Request,model_test_content_result,,1,1,1,1
+access_mdc_lab_test_unit,Lab Test Unit,model_test_unit,,1,1,1,1
+access_mdc_lab_test_appointment,Lab Test appointment,model_lab_appointment,,1,1,1,1
