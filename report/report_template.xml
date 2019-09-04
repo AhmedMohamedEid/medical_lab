@@ -43,7 +43,7 @@
                                  <thead>
                                      <tr>
                                          <th class="text-center">Request</th>
-                                         <th class="text-center">lab test</th>
+<!--                                         <th class="text-center">lab test</th>-->
                                          <th class="text-center">Content</th>
                                          <th class="text-center">result</th>
 
@@ -53,7 +53,7 @@
                                      <t t-foreach="doc.content_ids" t-as="app">
                                          <tr>
                                              <td><span t-field="app.request_id"/></td>
-                                             <td><span t-field="app.test_id"/></td>
+<!--                                             <td><span t-field="app.test_id"/></td>-->
                                              <td><span t-field="app.content_type_id"/></td>
 
                                              <td><span t-field="app.result"/></td>

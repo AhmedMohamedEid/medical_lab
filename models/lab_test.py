@@ -34,6 +34,7 @@ class LABCONTENT(models.Model):
 
 
 
+
 class TESTUNITTYPE(models.Model):
     _name = 'test.unit'
     _rec_name = 'name'
